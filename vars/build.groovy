@@ -1,7 +1,4 @@
-def call() {
-  stage('Build') {
-    echo 'Building the project...'
-    sh 'whoami'
-    sh 'docker build -t notes-app:latest .'
-  }
+def call(String projectName, String imageTag, String dockerhubUser) {
+    echo "Building Docker image: ${dockerhubUser}/${projectName}:${imageTag}"
+    sh "docker build -t ${dockerhubUser}/${projectName}:${imageTag} ."
 }
